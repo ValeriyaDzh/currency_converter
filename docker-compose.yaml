@@ -1,0 +1,14 @@
+services:
+  app:
+    container_name: currency_today_app
+    env_file:
+      - .env
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: |
+      bash -c "
+      uvicorn src.main:app --host 0.0.0.0 --port 8000
+      "
+    ports:
+      - "8000:8000"
